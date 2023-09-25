@@ -1,13 +1,12 @@
+from .models import *
 from rest_framework import serializers
-from .models import Post
 
 class CategorySerializer(serializers.ModelSerializer):
-    thumbnail = serializers.CharField(source='get_thumbnail')
-
+    thumbnail=serializers.CharField(source='get_thumbnail')
     class Meta:
-        model = Post
-        field = [
+        model=Category
+        fields=[
             'id',
             'name',
             'thumbnail',
-        ]   
+        ]

@@ -8,7 +8,7 @@ from apps.category.models import Category
 def blog_directory_path(instance, filename):
     return f'blog/{instance.title}/{filename}'   
 
-class Post(models.Manager):
+class Post(models.Model):
     class PostObjects(models.Manager):
         def get_queryset(self) -> QuerySet:
             return super().get_queryset().filter(status='published')
@@ -27,7 +27,7 @@ class Post(models.Manager):
     excerpt = models.CharField(max_length=100)
     # author = models.CharField(max_length=255)
     category = models.ForeignKey(Category, on_delete=models.PROTECT) 
-    published = models.DateTimeField(default=timezone.now())
+    published = models.DateTimeField(default=timezone.now)
     status = models.CharField(max_length=10, choices=options, default='draft')
     
     objects = models.Manager()

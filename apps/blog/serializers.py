@@ -1,14 +1,14 @@
 from rest_framework import serializers
-from .models import Post
+from .models import Post 
 from apps.category.serializers import CategorySerializer
 
 class PostSerializer(serializers.ModelSerializer):
     thumbnail = serializers.CharField(source='get_thumbnail')
     video = serializers.CharField(source='get_video')
-    caterogy = CategorySerializer()
+    category = CategorySerializer()
     class Meta:
         model = Post
-        field = [
+        fields = [
             'blog_uuid',
             'title',
             'slug',
@@ -16,7 +16,6 @@ class PostSerializer(serializers.ModelSerializer):
             'video',
             'description',
             'excerpt',
-            'author',
             'category',
             'published',
             'status',

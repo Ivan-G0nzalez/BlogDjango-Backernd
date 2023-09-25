@@ -175,7 +175,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = 'media/'
 
 STATICFILES_DIRS = [
-    'apps.blog'
+    os.path.join(BASE_DIR, 'dist')  
 ]
 
 # Default primary key field type
@@ -192,7 +192,7 @@ REST_FRAMEWORK = {
 }
 
 AUTHENTICATION_BACKENDS = (
-    'django.core.auth.backends.ModelBack'
+    'django.contrib.auth.backends.ModelBackend',
 )
 
 FILE_UPLOAD_PERMISSIONS = 0o640
